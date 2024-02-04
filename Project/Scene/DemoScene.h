@@ -4,6 +4,7 @@
 #include"GameManager.h"
 #include"Light/LightingManager.h"
 #include"GameObject/FireParticles/FireParticle.h"
+#include"AudioManager.h"
 
 enum DemoSceneChangeShadingModel
 {
@@ -106,4 +107,6 @@ private:
 
 	unique_ptr<FireParticle>fireParticle_ = nullptr;
 	bool isFireDraw_ = true;
+
+	uint32_t hitSoundHandle_ = 0;
 };

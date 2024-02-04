@@ -56,6 +56,8 @@ void DemoScene::Initialize()
 	fireParticle_ = make_unique<FireParticle>();
 	fireParticle_->Initialize({0.0f,2.0f,8.0f});
 
+	hitSoundHandle_ = AudioManager::SoundLoadWave("Resources/sounds/shot.wav");
+
 	viewProjection_.Initialize();
 	viewProjection_.translation_ = { 0.0f,2.0f,-16.0f };
 }
@@ -380,6 +382,12 @@ void DemoScene::ImGuIUpdate()
 		ImGui::Checkbox("DrawFlag", &isFireDraw_);
 		ImGui::TreePop();
 	}
+	ImGui::Separator();
+	if (ImGui::Button("SoundPlay"))
+	{
+		AudioManager::AudioPlayWave(hitSoundHandle_);
+	}
+
 
 	ImGui::End();
 	ImGui::PopStyleColor();
