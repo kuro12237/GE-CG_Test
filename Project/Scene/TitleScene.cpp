@@ -2,6 +2,8 @@
 
 void TitleScene::Initialize()
 {
+	WinApp::SetTiTleName(L"GE_CLEYERA_DEMO");
+
 	TextureManager::UnUsedFilePath();
 	cleyeraTexHandle_ = TextureManager::LoadPngTexture("Resources/Default/CLEYERA.png");
 	blackTexHandle_ = TextureManager::LoadPngTexture("blackTex.png");

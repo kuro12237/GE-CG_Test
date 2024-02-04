@@ -76,7 +76,6 @@ uint32_t DescriptorManager::CreateInstancingSRV(uint32_t NumInstansing, ComPtr<I
 void DescriptorManager::rootParamerterCommand(UINT rootPatramerterIndex, uint32_t texhandle)
 {
 	Commands command = DirectXCommon::GetInstance()->GetCommands();
-
 	command.m_pList->SetGraphicsRootDescriptorTable(
 		rootPatramerterIndex, 
 		DescriptorManager::GetInstance()->SrvHandleGPU[texhandle]
