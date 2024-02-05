@@ -33,6 +33,14 @@ struct  SelectModels
 	uint32_t Monkey_;
 };
 
+struct  DemoSpriteSrc
+{
+	Vector2 lt = { 0.0f,0.0f };
+	Vector2 lb = { 0.0f,1.0f };
+	Vector2 rt = { 1.0f,0.0f };
+	Vector2 rb = { 1.0f,1.0f };
+};
+
 class DemoScene :public IScene
 {
 public:
@@ -51,7 +59,7 @@ public:
 
 private:
 
-	void SpriteImGui(WorldTransform& w, const char* name, bool &drawFlag, BlendMode& b, Vector4& color, DemoSpriteChange& tc, Vector2& anker);
+	void SpriteImGui(WorldTransform& w, const char* name, bool &drawFlag, BlendMode& b, Vector4& color, DemoSpriteChange& tc, Vector2& anker, DemoSpriteSrc& src);
 
 	void ImGuIUpdate();
 
@@ -102,6 +110,8 @@ private:
 	BlendMode spriteBlendMode_[2] = { BlendNone,BlendNone };
 	Vector4 spriteColor_[2] = { {1,1,1,1},{1,1,1,1} };
 	Vector2 ankerPos_[2] = { 0.5f,0.5f };
+	DemoSpriteSrc spriteSrc[2] = {};
+
 	uint32_t uvCheckerTexHandle_ = 0;
 	uint32_t CLEYERATexHandle_ = 0;
 

@@ -66,7 +66,11 @@ void DemoScene::Update(GameManager* Scene)
 {
 	Scene;
 
+#ifdef USE_IMGUI
+
 	ImGuIUpdate();
+
+#endif // USE_IMGUI
 
 	GameObjectContorol();
 
@@ -148,7 +152,7 @@ void DemoScene::Flont2dSpriteDraw()
 	}
 }
 
-void DemoScene::SpriteImGui( WorldTransform& w,const char*name,bool &drawFlag,BlendMode &b,Vector4 &color,DemoSpriteChange &tc,Vector2 &anker)
+void DemoScene::SpriteImGui( WorldTransform& w,const char*name,bool &drawFlag,BlendMode &b,Vector4 &color,DemoSpriteChange &tc,Vector2 &anker,DemoSpriteSrc &src)
 {
 	auto SetBlend = [](BlendMode b)
 	{
@@ -190,6 +194,8 @@ void DemoScene::SpriteImGui( WorldTransform& w,const char*name,bool &drawFlag,Bl
 		ImGui::Checkbox("isDraw", &drawFlag);
 		ImGui::ColorPicker4("Color", &color.x);
 		ImGui::DragFloat2("anker", &anker.x, -0.1f, 0.1f);
+		ImGui::DragFloat2("src::Lt",&src.lt.x,- 0.1f, 0.1f);
+
 		if (ImGui::BeginCombo("BlendChange", SetBlend(b)))
 		{
 			for (int i = 0; i < 5; i++) {
@@ -374,8 +380,8 @@ void DemoScene::ImGuIUpdate()
 	ImGui::Separator();
 
 
-	SpriteImGui(spriteWorldTransform_[0], "spriteA",IsSpriteDraw[0],spriteBlendMode_[0],spriteColor_[0],SelectSprite_[0],ankerPos_[0]);
-	SpriteImGui(spriteWorldTransform_[1], "spriteB",IsSpriteDraw[1], spriteBlendMode_[1],spriteColor_[1],SelectSprite_[1],ankerPos_[1]);
+	SpriteImGui(spriteWorldTransform_[0], "spriteA",IsSpriteDraw[0],spriteBlendMode_[0],spriteColor_[0],SelectSprite_[0],ankerPos_[0],spriteSrc[0]);
+	SpriteImGui(spriteWorldTransform_[1], "spriteB",IsSpriteDraw[1], spriteBlendMode_[1],spriteColor_[1],SelectSprite_[1],ankerPos_[1],spriteSrc[1]);
 	ImGui::Separator();
 	if (ImGui::TreeNode("Particle"))
 	{
