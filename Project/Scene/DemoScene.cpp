@@ -102,6 +102,7 @@ void DemoScene::Update(GameManager* Scene)
 		Vector2 size = TextureManager::GetTextureSize(NowSelectTex[i]);
 		size.x *= ankerPos_[i].x;
 		size.y *= ankerPos_[i].y;
+		sprite_[i]->SetSrc(spriteSrc[i].lt, spriteSrc[i].lb, spriteSrc[i].rt, spriteSrc[i].rb);
 		sprite_[i]->SetPos(size);
 		sprite_[i]->SetColor(spriteColor_[i]);
 		sprite_[i]->SetTexHandle(NowSelectTex[i]);
@@ -195,6 +196,9 @@ void DemoScene::SpriteImGui( WorldTransform& w,const char*name,bool &drawFlag,Bl
 		ImGui::ColorPicker4("Color", &color.x);
 		ImGui::DragFloat2("anker", &anker.x, -0.1f, 0.1f);
 		ImGui::DragFloat2("src::Lt",&src.lt.x,- 0.1f, 0.1f);
+		ImGui::DragFloat2("src::Lb", &src.lb.x, -0.1f, 0.1f);
+		ImGui::DragFloat2("src::Rt", &src.rt.x, -0.1f, 0.1f);
+		ImGui::DragFloat2("src::Rb", &src.rb.x, -0.1f, 0.1f);
 
 		if (ImGui::BeginCombo("BlendChange", SetBlend(b)))
 		{
